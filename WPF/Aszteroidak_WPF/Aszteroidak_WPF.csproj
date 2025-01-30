@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Asteroid.png" />
+    <None Remove="Resources\mainGameBC.jpg" />
+    <None Remove="Resources\menuBC.jpg" />
+    <None Remove="Resources\pauseBC.jpg" />
+    <None Remove="Resources\ship.jpg" />
+    <None Remove="Resources\ship.png" />
+    <None Remove="Resources\Spaceship.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\mainGameBC.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\menuBC.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\pauseBC.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.71" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aszteroidak\Aszteroidak.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\asteroid.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ship.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

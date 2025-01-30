@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aszteroidák", "Aszteroidák\Aszteroidák.csproj", "{EB4467AF-AAD2-4F59-A841-3DF006FED720}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AszteroidakGameModelTest", "AszteroidakGameModelTest\AszteroidakGameModelTest.csproj", "{EF444851-0B3C-42E7-9B86-15C94C552CFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB4467AF-AAD2-4F59-A841-3DF006FED720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB4467AF-AAD2-4F59-A841-3DF006FED720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB4467AF-AAD2-4F59-A841-3DF006FED720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB4467AF-AAD2-4F59-A841-3DF006FED720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF444851-0B3C-42E7-9B86-15C94C552CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF444851-0B3C-42E7-9B86-15C94C552CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF444851-0B3C-42E7-9B86-15C94C552CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF444851-0B3C-42E7-9B86-15C94C552CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32921343-758F-4666-AFAE-17397870CB26}
+	EndGlobalSection
+EndGlobal

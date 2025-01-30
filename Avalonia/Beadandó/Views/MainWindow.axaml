@@ -1,0 +1,21 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Beadandó.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:Beadandó.Views"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Beadandó.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Beadandó"
+		SizeToContent="WidthAndHeight">
+        <views:MainView />
+
+	    <Window.KeyBindings>
+		    <KeyBinding Gesture="W" Command="{Binding PlayerUpCommand}"/>
+		    <KeyBinding Gesture="A" Command="{Binding PlayerLeftCommand}"/>
+		    <KeyBinding Gesture="S" Command="{Binding PlayerDownCommand}"/>
+		    <KeyBinding Gesture="D" Command="{Binding PlayerRightCommand}"/>
+		    <KeyBinding Gesture="Escape" Command="{Binding PauseMenuCommand}"/>
+	    </Window.KeyBindings>
+</Window>

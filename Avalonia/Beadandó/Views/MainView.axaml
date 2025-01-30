@@ -1,0 +1,194 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Beadandó.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Beadandó.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+
+	<Viewbox>
+		<Grid Height="{Binding GridHeight}" Width="{Binding GridWidth}">
+			<Grid IsVisible="{Binding MainMenuVisible}">
+				<Grid.Background>
+					<ImageBrush Source="/Assets/mainBC.jpg"  Stretch="UniformToFill"/>
+				</Grid.Background>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0"
+						   Margin="0,100,0,80"
+						   Text="Aszteroidák"
+						   TextAlignment="Center"
+						   FontSize="55"
+						   FontWeight="Bold"
+						   Foreground="#91d678"
+						   FontFamily="Bauhaus 93"
+					   />
+
+				<Button Grid.Row="1"
+						Margin="0,0,0,20"
+						Content="New Game"
+						Command="{Binding NewGameCommand}"
+						FontSize="50"
+						FontWeight="Bold"
+						Background="Transparent"
+						Foreground="#3d8a75"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						HorizontalContentAlignment="Center"
+						FontFamily="Bauhaus 93"
+				/>
+
+				<Button Grid.Row="2"
+						Content="Exit Game"
+						Command="{Binding ExitCommand}"
+						FontSize="50"
+						FontWeight="Bold"
+						Background="Transparent"
+						Foreground="#3d8a75"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						HorizontalContentAlignment="Center"
+						FontFamily="Bauhaus 93"
+				/>
+			</Grid>
+			<Grid x:Name="MainGame" Background="Beige" IsVisible="{Binding MainGameVisible}">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="70"/>
+				</Grid.RowDefinitions>
+				<Grid.Background>
+					<ImageBrush Source="/Assets/mainGameBC.jpg" Stretch="UniformToFill"/>
+				</Grid.Background>
+				<ItemsControl ItemsSource="{Binding Asteroids}" Grid.Row="0">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<Canvas/>
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Path>
+								<Path.Fill>
+									<ImageBrush Source="/Assets/asteroid.png" />
+								</Path.Fill>
+								<Path.Data>
+									<PathGeometry>
+										<PathFigure StartPoint="{Binding X},0">
+											<LineSegment Point="50,0"/>
+											<LineSegment Point="50,50"/>
+											<LineSegment Point="0,50"/>
+											<LineSegment Point="0,0"/>
+										</PathFigure>
+									</PathGeometry>
+								</Path.Data>
+								<Path.RenderTransform>
+									<TranslateTransform X="{Binding X}" Y="{Binding Y}"/>
+								</Path.RenderTransform>
+							</Path>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+				<Canvas Grid.Row="0">
+					<Rectangle
+						Fill="Pink"
+						Height="60"
+						Width="60"
+						Canvas.Left="{Binding PlayerX}"
+						Canvas.Top="{Binding PlayerY}">
+						<Rectangle.Fill>
+							<ImageBrush Source="/Assets/ship.png" />
+						</Rectangle.Fill>
+					</Rectangle>
+				</Canvas>
+
+				<Grid Grid.Row="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<StackPanel Orientation="Horizontal" Grid.Column="1">
+						<Button x:Name="LeftKey" Command="{Binding PlayerLeftCommand}" Width="60" Height="60">
+							<Button.Background>
+								<ImageBrush Source="/Assets/leftarrow.png"/>
+							</Button.Background>
+
+						</Button>
+						<Button x:Name="RightKey" Command="{Binding PlayerRightCommand}" Width="60" Height="60">
+							<Button.Background>
+								<ImageBrush Source="/Assets/rightarrow.png"/>
+							</Button.Background>
+
+						</Button>
+					</StackPanel>
+					<Button x:Name="PauseKey" Command="{Binding PauseMenuCommand}" Width="60" Height="60" Grid.Column="2" HorizontalAlignment="Right">
+						<Button.Background>
+							<ImageBrush Source="/Assets/menubutton.png"/>
+						</Button.Background>
+					</Button>
+				</Grid>
+			</Grid>
+
+			<Grid x:Name="PauseMenu" Background="AliceBlue" IsVisible="{Binding PauseMenuVisible}">
+				<Grid.Background>
+					<ImageBrush Source="/Assets/pauseBC.jpg" Stretch="UniformToFill"/>
+				</Grid.Background>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+
+				<TextBlock Grid.Row="0"
+						   Margin="0,120,0,80"
+						   Text="Paused"
+						   TextAlignment="Center"
+						   FontSize="60"
+						   FontWeight="Bold"
+						   Foreground="#FFFF9ED3"
+						   FontFamily="Bauhaus 93"/>
+
+				<Button Grid.Row="1"
+						Margin="0,0,0,20"
+						Content="Save Game"
+						Command="{Binding SaveGameCommand}"
+						FontSize="50"
+						FontWeight="Bold"
+						Foreground="White"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						HorizontalContentAlignment="Center"
+						Background="Transparent"
+						FontFamily="Bauhaus 93"/>
+
+				<Button Grid.Row="2"
+						Content="Load Game"
+						Command="{Binding LoadGameCommand}"
+						FontSize="50"
+						FontWeight="Bold"
+						Foreground="White"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						HorizontalContentAlignment="Center"
+						Background="Transparent"
+						FontFamily="Bauhaus 93"/>
+				<Button Command="{Binding PauseMenuCommand}" Width="60" Height="60" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+					<Button.Background>
+						<ImageBrush Source="/Assets/menubutton.png"/>
+					</Button.Background>
+				</Button>
+			</Grid>
+		</Grid>
+	</Viewbox>
+</UserControl>
